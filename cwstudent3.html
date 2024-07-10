@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile Setup</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      width: 400px;
+      text-align: center;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    .progress-bar {
+      background-color: #e0e0e0;
+      border-radius: 5px;
+      overflow: hidden;
+      margin-bottom: 20px;
+    }
+
+    .progress {
+      height: 10px;
+      background-color: #4caf50;
+      width: 0;
+    }
+
+    .profile-output {
+      background-color: #f9f9f9;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      margin-bottom: 20px;
+      text-align: left;
+    }
+
+    .form-container {
+      text-align: left;
+    }
+
+    .form-step {
+      display: none;
+    }
+
+    .form-step.active {
+      display: block;
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="date"],
+    input[type="checkbox"] {
+      width: calc(100% - 22px);
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+
+    .next-btn,
+    .prev-btn,
+    .submit-btn {
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    .next-btn:hover,
+    .prev-btn:hover,
+    .submit-btn:hover {
+      background-color: #45a049;
+    }
+
+    .prev-btn {
+      background-color: #ddd;
+      color: black;
+    }
+
+    .prev-btn:hover {
+      background-color: #ccc;
+    }
+
+    .error-message {
+      color: red;
+      display: none;
+      margin-top: 5px;
+    }
+
+    .error {
+      border-color: red;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Profile Setup</h1>
+    <div class="progress-bar">
+      <div id="progress" class="progress"></div>
+    </div>
+    <div id="profile-output" class="profile-output">
+      <!-- Dynamic profile output will be shown here -->
+    </div>
+    <div id="form-container" class="form-container">
+      <!-- Step 1 -->
+      <div class="form-step active" id="step-1">
+        <label for="name">What is your full name?</label>
+        <input type="text" id="name" name="name" required>
+        <span class="error-message" id="name-error">This field is required.</span>
+        <label for="email">What is your email address?</label>
+        <input type="email" id="email" name="email" required>
+        <span class="error-message" id="email-error">This field is required.</span>
+        <label for="phone">What is your phone number?</label>
+        <input type="tel" id="phone" name="phone" required>
+        <span class="error-message" id="phone-error">This field is required.</span>
+        <label for="dob">What is your date of birth?</label>
+        <input type="date" id="dob" name="dob">
+        <button class="next-btn" onclick="validateStep(1, 2)">Next</button>
+      </div>
+      <!-- Step 2 -->
+      <div class="form-step" id="step-2">
+        <label for="address">What is your street address?</label>
+        <input type="text" id="address" name="address" required>
+        <span class="error-message" id="address-error">This field is required.</span>
+        <label for="city">What is your city?</label>
+        <input type="text" id="city" name="city" required>
+        <span class="error-message" id="city-error">This field is required.</span>
+        <label for="state">What is your state/province?</label>
+        <input type="text" id="state" name="state" required>
+        <span class="error-message" id="state-error">This field is required.</span>
+        <label for="postalCode">What is your postal code?</label>
+        <input type="text" id="postalCode" name="postalCode">
+        <button class="prev-btn" onclick="prevStep(1)">Previous</button>
+        <button class="next-btn" onclick="validateStep(2, 3)">Next</button>
+      </div>
+      <!-- Step 3 -->
+      <div class="form-step" id="step-3">
+        <label for="concerns">What are your wellness concerns?</label>
+        <label for="skin">Skin</label>
+        <input type="radio" id="skin" name="concerns" value="skin">
+        <label for="hair">Hair</label>
+        <input type="radio" id="hair" name="concerns" value="hair">
+        <label for="mindfulness">Mindfulness</label>
+        <input type="radio" id="mindfulness" name="concerns" value="mindfulness" checked>
+        <label for="other">Other</label>
+        <input type="text" id="other" name="other">
+        <label for="brands">Do you have any preferred brands?</label>
+        <input type="text" id="brands" name="brands">
+        <label for="frequency">How often do you shop online?</label>
+        <input type="text" id="frequency" name="frequency">
+        <label for="promoEmails">Would you like to receive promotional emails?</label><br>
+        <input type="checkbox" id="promoEmails" name="promoEmails">
+        <button class="prev-btn" onclick="prevStep(2)">Previous</button>
+        <button class="submit-btn" onclick="submitForm()">Submit</button>
+      </div>
+    </div>
+  </div>
+  <script>
+    let currentStep = 1;
+    const profile = {};
+
+    function nextStep(step) {
+      saveCurrentStepData();
+      showStep(step);
+      updateProgress();
+    }
+
+    function prevStep(step) {
+      showStep(step);
+      updateProgress();
+    }
+
+    function showStep(step) {
+      document.querySelectorAll('.form-step').forEach((formStep) => {
+        formStep.classList.remove('active');
+      });
+      document.getElementById(`step-${step}`).classList.add('active');
+      currentStep = step;
+    }
+
+    function updateProgress() {
+      const progress = (currentStep / 3) * 100;
+      document.getElementById('progress').style.width = `${progress}%`;
+    }
+
+    function saveCurrentStepData() {
+      const currentFormStep = document.getElementById(`step-${currentStep}`);
+      const inputs = currentFormStep.querySelectorAll('input, textarea');
+      inputs.forEach((input) => {
+        profile[input.name] = input.type === 'checkbox' ? input.checked : input.value;
+      });
+      updateProfileOutput();
+    }
+
+    function updateProfileOutput() {
+      const output = document.getElementById('profile-output');
+      output.innerHTML = '';
+      for (const key in profile) {
+        const value = profile[key];
+        const p = document.createElement('p');
+        p.textContent = `${key.charAt(0).toUpperCase() + key.slice(1)}: ${value}`;
+        output.appendChild(p);
+      }
+    }
+
+    function validateStep(current, next) {
+      const currentFormStep = document.getElementById(`step-${current}`);
+      const inputs = currentFormStep.querySelectorAll('input[required], textarea[required]');
+      let valid = true;
+      inputs.forEach((input) => {
+        const errorElement = document.getElementById(`${input.id}-error`);
+        if (!input.checkValidity()) {
+          input.classList.add('error');
+          errorElement.style.display = 'block';
+          valid = false;
+        } else {
+          input.classList.remove('error');
+          errorElement.style.display = 'none';
+        }
+      });
+      if (valid) {
+        nextStep(next);
+      }
+    }
+
+    function submitForm() {
+      saveCurrentStepData();
+      alert('Profile completed successfully!');
+    }
+  </script>
+</body>
+</html>
