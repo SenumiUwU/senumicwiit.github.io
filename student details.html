@@ -1,32 +1,84 @@
 <!DOCTYPE html>
-<html lang="eng">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>student details</title>
+    <title>Student Details</title>
     <style>
-        
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .team {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            list-style: none;
+            padding: 0;
+        }
+
+        .person {
+            position: relative;
+            overflow: hidden;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+        }
+
+        .person img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .new-info {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        .person:hover .new-info {
+            opacity: 1;
+        }
+
+        .new-info p {
+            margin: 10px;
+        }
+
+        figcaption {
+            padding: 10px;
+            text-align: center;
+        }
     </style>
 </head>
- <body>
-    <section class="Team members">
+<body>
+    <section class="team-members">
         <h2>Team Members</h2>
         <ul class="team content-grid">
             <li class="person has-alt content-grid__item">
                 <figure>
-                    <!-- New Information for Craig Johnson -->
+                    <img src="my image.jpg" alt="Senumi Dahanayake">
                     <div class="new-info">
-                        <p>Senumi has put an effort to create the interactive suer profile and the team members grid</p>
-                        <p>Contact:<address>senumi.20230148@iit.ac.lk</address></p>
+                        <p>Senumi has put an effort to create the interactive user profile and the team members grid.</p>
+                        <p>Contact: <a href="mailto:senumi.20230148@iit.ac.lk">senumi.20230148@iit.ac.lk</a></p>
                     </div>
                     <figcaption>
                         <h4 class="title--main">Senumi Dahanayake</h4>
-                        <p class="role title--secondary">Stusent &amp; 3</p>
+                        <p class="role title--secondary">Student 3</p>
                     </figcaption>
                 </figure>
             </li>
             <li class="person has-alt content-grid__item">
                 <figure>
-                    <!-- New Information for Blake Howard -->
+                    <img src="https://via.placeholder.com/200" alt="Blake Howard">
                     <div class="new-info">
                         <p>Blake Howard is a creative mastermind with a passion for design and a track record of successful projects.</p>
                         <p>Contact: blake.howard@example.com</p>
@@ -39,7 +91,7 @@
             </li>
             <li class="person has-alt content-grid__item">
                 <figure>
-                    <!-- New Information for Lauren Hood -->
+                    <img src="https://via.placeholder.com/200" alt="Lauren Hood">
                     <div class="new-info">
                         <p>Lauren Hood brings a wealth of knowledge in marketing and has been instrumental in growing the company's brand.</p>
                         <p>Contact: lauren.hood@example.com</p>
@@ -50,14 +102,20 @@
                     </figcaption>
                 </figure>
             </li>
+            <li class="person has-alt content-grid__item">
+                <figure>
+                    <img src="https://via.placeholder.com/200" alt="New Member">
+                    <div class="new-info">
+                        <p>New Member has recently joined the team and is contributing to various projects.</p>
+                        <p>Contact: new.member@example.com</p>
+                    </div>
+                    <figcaption>
+                        <h4 class="title--main">New Member</h4>
+                        <p class="role title--secondary">Team Member</p>
+                    </figcaption>
+                </figure>
+            </li>
         </ul>
     </section>
-    
-    
-                    
-    
-    
-            
-        
 </body>
 </html>
