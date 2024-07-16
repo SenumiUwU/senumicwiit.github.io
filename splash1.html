@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Splash Screen with Main Content Background</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            font-family: Arial, sans-serif;
+        }
+
+        #splash-screen {
+            width: 100%;
+            height: 100%;
+            background-color: #17983e; /* Light grey background color */
+            background: url('bg1.png') no-repeat center center;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            color: rgb(5, 3, 6);
+            text-align: center;
+            letter-spacing: -1px; /* Decrease letter spacing */
+        }
+
+        #splash-screen h1 {
+            font-size: 3em;
+            margin: 0.5em 0;
+        }
+
+        #splash-screen p {
+            font-size: 1.5em;
+            text-align: center; /* Ensure text is centered */
+            letter-spacing: -0.5px; /* Decrease letter spacing */
+        }
+
+        #main-content {
+            display: none;
+            width: 100%;
+            height: 100%;
+            background-image: url("bg1.png");
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            color: rgb(7, 25, 46);
+            padding: 2em;
+            letter-spacing: -0.5px; /* Decrease letter spacing */
+        }
+
+        #main-content h1,
+        #main-content p {
+            font-size: 2em;
+            text-align: center; /* Ensure text is centered */
+        }
+
+        .centered-text {
+            text-align: center;
+            font-size: 2em;
+            letter-spacing: 5px; /* Decrease letter spacing */
+        }
+    </style>
+</head>
+<body>
+    <div id="splash-screen">
+        <h1>Welcome to CaptainFit</h1>
+        <p>Loading...</p>
+    </div>
+
+    <div id="main-content">
+        <h1>Main Content</h1>
+        <p>This is the main content of the website.</p>
+        <p>Supun Kaushalya</p>
+        <p>Manuga Chanketh</p>
+        <p>Tilan wishwajith</p>
+        <p>Senumi Dahanayake</p>
+    </div>
+
+    <script>
+        // Simulate loading time
+        setTimeout(() => {
+            document.getElementById('splash-screen').style.display = 'none';
+            document.getElementById('main-content').style.display = 'flex'; // Display main content
+        }, 3000); // 3000 milliseconds = 3 seconds
+    </script>
+</body>
+</html>
