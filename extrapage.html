@@ -6,9 +6,133 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Improving Gut Health Naturally</title>
     <style>
+        * {
+            padding: 0;
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            text-decoration: none;
+            list-style: none;
+            box-sizing: border-box;
+            line-height: 1.2;
+        }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-image: url('THISHU/images/background image.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background-color: #bbbbbb;
+        }
+        .Page {
+            flex-basis: 50%;
+            min-width: 300px;
+            padding-left: 200px;
+            padding-top: 50px;
+            color: rgba(255, 255, 255, 0.803);
+        }
+        .btn {
+            display: inline-block;
+            background: #c8f9f4;
+            color: black;
+            padding: 8px 30px;
+            margin: 30px 0;
+            text-decoration: none;
+        }
+        .btn:hover {
+            background: #0082e6;
+            color: rgb(10, 176, 99);
+        }
+        nav {
+            background: linear-gradient(to bottom, #0082e6, #005f99);
+            height: 80px;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transform: perspective(1000px) rotateX(5deg);
+            transform-origin: top;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        nav img {
+            height: 200px;
+            width: auto;
+            margin-left: 20px;
+        }
+        nav ul {
+            float: right;
+            margin-right: 20px;
+        }
+        nav ul li {
+            display: inline-block;
+            line-height: 80px;
+            margin: 0 5px;
+        }
+        nav ul li a {
+            color: white;
+            font-size: 17px;
+            padding: 7px 13px;
+            border-radius: 3px;
+            text-transform: uppercase;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+        nav ul li a:hover, nav ul li a.active {
+            background: #1b9bff;
+            transform: translateY(-5px);
+        }
+        .checkbtn {
+            font-size: 30px;
+            color: white;
+            float: right;
+            line-height: 80px;
+            margin-right: 40px;
+            cursor: pointer;
+            display: none;
+        }
+        #check {
+            display: none;
+        }
+        @media (max-width: 768px) {
+            nav ul {
+                position: fixed;
+                width: 100%;
+                height: 100vh;
+                background: #078fb8;
+                top: 70px;
+                left: -100%;
+                text-align: center;
+                transition: all 0.5s;
+            }
+            nav ul li {
+                display: block;
+                margin: 40px 0;
+                line-height: 30px;
+            }
+            nav ul li a {
+                font-size: 20px;
+            }
+            nav ul li a:hover, nav ul li a.active {
+                background: none;
+                color: #1b9bff;
+            }
+            #check:checked ~ ul {
+                left: 0;
+            }
+            .checkbtn {
+                display: block;
+            }
+        }
         body {
             font-family: 'EuclidCircularB-Bold';
             font-size: large;
+            color: #008080;
+            margin-top: 100px;
         }
 
         h1{
@@ -61,11 +185,104 @@
             background-color: #333;
             margin: 20px;
         }
+        footer {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: auto;
+            background-color: #1b9bff; 
+            padding: 20px 5%;
+        }
+        ul {list-style: none;
+        }
+        .footer-col {
+            width: 25%;
+        }
+        .footer-col h4 {
+            position: relative;
+            margin-bottom: 10px;
+            font-weight: 400;
+            font-size: 20px;
+            color: white;
+            text-transform: capitalize;
+        }
+        .footer-col h4::before {
+            content: '';
+            position: absolute;
+            left: 2;
+            bottom: -6px;
+            background-color: #dda50d;
+            height: 2px;
+            width: 40px;
+        }
+        ul li:not(:last-child) {
+            margin-bottom: 8px;
+        }
+        ul li a {
+            display: block;
+            font-size: 19px;
+            text-transform: capitalize;
+            color: rgb(26, 15, 149);
+            text-decoration: none;
+            transition: 0.4s;
+        }
+        ul li a:hover {
+            color: white;
+            padding-left: 2px;
+        }
+        .links a {
+            display: inline-block;
+            height: 44px;
+            width: 44px;
+            color: white;
+            background-color: rgb(43, 195, 46);
+            margin: 0 8px 8px 0;
+            text-align: center;
+            line-height: 44px;
+            border-radius: 50%;
+            transition: 0.4s;
+        }
+        .links a:hover{
+            color: #4d4f55;
+            background-color: white;
+        }
+        @media(max-width: 740px){
+            .footer-col {
+                width: 50%;
+                margin-bottom: 30px;
+                text-align: center;
+            }
+            .footer-col h4::before{
+                all: unset;
+            }
+        }
+        @media(max-width: 555px){
+            .footer-col {
+                width: 100%;
+            }
+        }
 
     </style>
 </head>
 
 <body>
+    <nav>
+        <img src="C:\Users\Sujani\Downloads\Logo1.jpg" alt="web logo">
+        <input type="checkbox" id="check" class="checkbtn">
+        <label for="check" class="checkbtn">
+            <i class="fas fa-bars"></i>
+        </label>
+        <ul>
+            <li><a href="home.html">HOME</a></li>
+            <li><a href="gallery.html">GALLERY</a></li>
+            <li><a href="product.html">SHOP</a></li>
+            <li><a href="cwstudent3.html">USER PROFILE</a></li>
+            <li><a href="feedback.html">FEEDBACK</a></li>
+            <li><a href="sitemap.html">SITE MAP</a></li>
+            <li><a href="student details.html">TEAM</a></li>
+            <li><a href="Editor.html">Page Editor</a></li>
+            <li><a href="Content.html">Content</a></li>
+        </ul>
+    </nav>
     <h1>Gut Health and Wellness.</h1><br>
     <div class="intro-content wysiwyg-content">
         <p>When talking about gut health,it is one of the main aspects of health.What you eat and how your body functions reflect on the outside.
@@ -151,6 +368,39 @@
     <div class="footer">
         <p>For more information on gut health reach: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6682904/"><em> RD Jr, Pontefract BA, Mishcon HR, Black CA, Sutton SC, Theberge CR. Gut microbiome: Profound implications for diet and disease. Nutrients. 2019;11(7):1613.</em></a></p><br>
     </div>
+    <footer>
+        <div class="footer-col">
+            <h4><b>Shop</b></h4>
+            <ul>
+                <li><a href="#"><b>T-Shirts</b></a></li>
+                <li><a href="#"><b>Water Bottle</b></a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4><b>Gallery</b></h4>
+            <ul>
+                <li><a href="#"><b>Healthy Activities</b></a></li>
+                <li><a href="#"><b>Unhealthy Activities</b></a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4><B>Team</B></h4>
+            <ul>
+                <li><a href="#"><b>about</b></a></li>
+                <li><a href="#"><b>contact us</b></a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4><B>Follow Us</B></h4>
+            <div class="links">
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+        <p>&copy; 2024 YourWebsiteName. All rights reserved.</p>
+    </footer>
 </body>
 
 </html>
