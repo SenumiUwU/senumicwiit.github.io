@@ -1,13 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Improving Gut Health Naturally</title>
+    <title>Student Details</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
-
         * {
             padding: 0;
             margin: 0;
@@ -132,60 +129,63 @@
         }
         body {
             font-family: 'EuclidCircularB-Bold';
-            font-size: large;
             color: #008080;
-            margin-top: 100px;
+            background-color: #a0e7e5;
+            margin-top: 200px;
+            margin-bottom: auto;
         }
-
-        h1{
+        h2{
             text-align: center;
         }
 
-        .intro-content,
-        .wysiwyg-content {
-            margin: 20px;
+        .team {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            list-style: none;
+            padding: 0;
         }
 
-        .article-section h3,
-        .article-section h2 {
-            color: #2c3e50;
+        .person {
+            position: relative;
+            overflow: hidden;
+            border: 1px solid #ccc;
+            border-radius: 10px;
         }
 
-        .blue-bullets ul {
-            list-style-type: disc;
-            margin-left: 20px;
+        .person img {
+            width: 100%;
+            height: auto;
+            display: block;
         }
 
-        .cta-builder {
-            background-color: #f4f4f4;
-            padding: 10px;
-            margin-top: 20px;
-            border: 1px solid #ddd;
-        }
-
-        .cta-builder__wrap {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .cta-builder-button {
-            background-color: #657E79;
-            color: #fff;
-            padding: 10px 20px;
-            text-decoration: none;
-        }
-
-        .img-size {
+        .new-info {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
         }
 
-        hr{
-            border: none;
-            height: 1px;
-            background-color: #333;
-            margin: 20px;
+        .person:hover .new-info {
+            opacity: 1;
+        }
+
+        .new-info p {
+            margin: 10px;
+        }
+
+        figcaption {
+            padding: 10px;
+            text-align: center;
         }
         footer {
             display: flex;
@@ -262,11 +262,8 @@
                 width: 100%;
             }
         }
-
     </style>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
-
 <body>
     <nav>
         <img src="Logo1.jpg" alt="web logo">
@@ -283,94 +280,66 @@
             <li><a href="sitemap.html">SITE MAP</a></li>
             <li><a href="studentdetails.html">TEAM</a></li>
             <li><a href="pageditorst3.html">Page Editor</a></li>
-            <li><a href="extrapage.html">Content</a></li>
+            <li><a href="extrapage.html.html">Content</a></li>
         </ul>
     </nav>
-    <h1>Gut Health and Wellness.</h1><br>
-    <div class="intro-content wysiwyg-content">
-        <p>When talking about gut health,it is one of the main aspects of health.What you eat and how your body functions reflect on the outside.
-            It reflects on your mental health and appearance.If you want to heal hoilistically and see the changes in your mentality and physique you should 
-            work on your gut health to enhance the overrall wellbeing</p>
-        <p>Most people can enhance their gut health naturally through diet. Here are the types of food that provide
-            significant benefits to gut health.</p>
-        <img src="healthyfood.jpg" alt="Healthy food." class="img-size">
-    </div>
-    
-
-    <div class="wysiwyg-content">
-        <div class="bottom-section">
-            <section id="high_fiber_foods_like_beans_oats_and_fruits_section" class="article-section">
-                <div class="section-content wysiwyg-content blue-bullets">
-                    <h3>High-Fiber Foods Like Beans, Oats, and Fruits</h3>
-                    <p>Fiber, a type of carbohydrate found in plant-based foods, is categorized as either soluble or
-                        insoluble.</p>
-                    <p>Soluble fiber absorbs water and forms a gel that is consumed by gut bacteria, explains Alicia
-                        Romano, a clinical dietitian at Tufts Medical Center in Boston and spokesperson for the Academy
-                        of Nutrition and Dietetics. On the other hand, insoluble fiber passes through your digestive
-                        tract largely intact, adding bulk to your stool. “This makes food pass more quickly through the
-                        GI tract, thus promoting regular bowel movements,” says Romano.</p>
-                    <p>Both types of fiber aid in digestion and help prevent constipation. Consuming high-fiber foods
-                        also helps protect against weight gain and chronic conditions such as heart disease, type 2
-                        diabetes, high blood pressure, and certain types of cancer, according to a review in <em>The
-                            Lancet</em>.</p>
-                    <p>Good sources of fiber include:</p>
-                    <ul>
-                        <li>Beans, dried peas, and lentils</li>
-                        <li>Bran (oat and wheat)</li>
-                        <li>Dried fruits, such as prunes and raisins</li>
-                        <li>Foods made with whole grains, such as whole-grain bread, whole-grain cereal, and whole-grain
-                            pasta</li>
-                        <li>Whole grains, such as barley, quinoa, bulgur, and brown rice</li>
-                        <li>Fresh fruits, especially apples with skin, pears with skin, oranges, blueberries,
-                            raspberries, blackberries, and strawberries</li>
-                        <li>Nuts</li>
-                        <li>Seeds</li>
-                        <li>Vegetables, especially artichokes, broccoli, green peas, winter squash, and white potatoes
-                            and sweet potatoes with skin</li>
-                    </ul>
-                    <h3>Probiotic Foods Like Kimchi, Kombucha, and Kefir</h3>
-                    <p>Probiotic foods (such as kimchi, kombucha, and kefir) are rich in beneficial live microorganisms.
-                        Incorporating them into your diet is an effective way to enhance gut health, says Ryan Andrews,
-                        a principal nutritionist and advisor at Precision Nutrition, a digital coaching and
-                        certification company. “Fermented plant foods, in particular, appear to support gut health and
-                        offer various benefits,” he says. For instance, a 2021 study in the journal <em>Cell</em> found
-                        that participants who consumed fermented foods experienced increased microbiome diversity and
-                        improved immune responses.</p>
-                </div>
-            </section>
-
-            <section id="a_varied_diet_improves_gut_health_naturally_section" class="article-section">
-                <div class="section-content wysiwyg-content blue-bullets">
-                    <h3>A Varied Diet Improves Gut Health Naturally</h3>
-                    <p>Eating a diverse diet that includes different types of food is one of the best things you can do
-                        for your gut, says Andrews. “By consuming various foods, we provide different species [of
-                        bacteria] with different types of fuel,” he explains. “This can lead to greater microbial
-                        diversity and a more robust gut microbiome.” This is important because increased gut microbiome
-                        diversity is linked to better health outcomes.</p>
-                    <p>A varied diet can include:</p>
-                    <ul>
-                        <li>Eating foods from all five food groups, including fruits, vegetables, grains, protein foods,
-                            and dairy or fortified soy alternatives</li>
-                        <li>Eating different types of fiber, such as from beans, whole grains, and vegetables</li>
-                        <li>Eating a range of plant-based foods, such as fruits, vegetables, nuts, seeds, whole grains,
-                            and legumes</li>
-                    </ul>
-                    <p>In addition to eating a varied diet, there are other ways to promote a healthy gut, such as:</p>
-                    <ul>
-                        <li>Staying hydrated</li>
-                        <li>Engaging in regular physical activity</li>
-                        <li>Managing stress</li>
-                        <li>Getting enough sleep</li>
-                    </ul>
-
-                </div>
-            </section>
-        </div>
-    </div>
-    <hr>
-    <div class="footer">
-        <p>For more information on gut health reach: <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6682904/"><em> RD Jr, Pontefract BA, Mishcon HR, Black CA, Sutton SC, Theberge CR. Gut microbiome: Profound implications for diet and disease. Nutrients. 2019;11(7):1613.</em></a></p><br>
-    </div>
+    <section class="team-members">
+        <h2>Team Members</h2><br><br>
+        <ul class="team content-grid">
+            <li class="person has-alt content-grid__item">
+                <figure>
+                    <img src="teamm1.jpg" alt="Chanketh manuga">
+                    <div class="new-info">
+                        <p>Manuha has involved in creating the splash screen and shop and also content pages.</p>
+                        <p>Contact: lauren.hood@example.com</p>
+                    </div>
+                    <figcaption>
+                        <h4 class="title--main">Chanketh Manuga</h4>
+                        <p class="role title--secondary">Student 1</p>
+                    </figcaption>
+                </figure>
+            </li>
+            <li class="person has-alt content-grid__item">
+                <figure>
+                    <img src="teamm.jpg" alt="Supun">
+                    <div class="new-info">
+                        <p>Supun has taken eforts to implement the home page and the feedaback page along with content pages.</p>
+                        <p>Contact: blake.howard@example.com</p>
+                    </div>
+                    <figcaption>
+                        <h4 class="title--main">Supun Kaushal</h4>
+                        <p class="role title--secondary">Student 2</p>
+                    </figcaption>
+                </figure>
+            </li>
+            <li class="person has-alt content-grid__item">
+                <figure>
+                    <img src="myimage.jpg" alt="Senumi Dahanayake">
+                    <div class="new-info">
+                        <p>Senumi has put an effort to create the interactive user profile and the team members grid along with content pages.</p>
+                        <p>Contact: <a href="mailto:senumi.20230148@iit.ac.lk">senumi.20230148@iit.ac.lk</a></p>
+                    </div>
+                    <figcaption>
+                        <h4 class="title--main">Senumi Dahanayake</h4>
+                        <p class="role title--secondary">Student 3</p>
+                    </figcaption>
+                </figure>
+            </li>
+            <li class="person has-alt content-grid__item">
+                <figure>
+                    <img src="teamm2.jpg" alt="Tilan Wishwajith">
+                    <div class="new-info">
+                        <p>Tilan took interest in making the gallery,sitemap and content pages.</p>.
+                        <p>Contact: new.member@example.com</p>
+                    </div>
+                    <figcaption>
+                        <h4 class="title--main">Tilan Wishwajith</h4>
+                        <p class="role title--secondary">Student 4</p>
+                    </figcaption>
+                </figure>
+            </li>
+        </ul>
+    </section>
     <h3><a href="pageditorst3.html">page editor</a></h3>
 
     <footer>
@@ -384,8 +353,8 @@
         <div class="footer-col">
             <h4><b>Gallery</b></h4>
             <ul>
-                <li><a href="#"><b>Healthy Activities</b></a></li>
-                <li><a href="#"><b>Unhealthy Activities</b></a></li>
+                <li><a href="gallery.html"><b>Healthy Activities</b></a></li>
+                <li><a href="gallery.html"><b>Unhealthy Activities</b></a></li>
             </ul>
         </div>
         <div class="footer-col">
@@ -407,5 +376,4 @@
         <p>&copy; 2024 YourWebsiteName. All rights reserved.</p>
     </footer>
 </body>
-
 </html>
