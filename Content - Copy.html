@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            text-decoration: none;
+            list-style: none;
+            box-sizing: border-box;
+            line-height: 1.2;
+        }
+        .center {
+        text-align: center;
+        margin-top: 100px; /* Add margin to ensure content is visible below the nav */
+        }
+        /* Styling for buttons */
+        .button {
+        padding: 10px 0; /* Adjust padding as needed */
+        width: 500px; /* Fixed width for buttons */
+        font-size: 16px;
+        background-color: rgb(18, 215, 44); /* Blue color */
+        color: #150e0e; /* White text */
+        cursor: pointer;
+        border-radius: 20px;
+        }
+        .button:hover {
+        background-color: rgb(199, 213, 213); /* Darker blue color */
+        }
+        body {
+            font-family: montserrat;
+            background-color: #8dd9d2;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            height: 100vh;  
+            
+        }
+        .fieldset-container {
+            border: 3px solid #0b0606; /* Add border with desired style and color */
+            padding: 3px; /* Add padding for better spacing */
+        }
+        .head{
+            background-color: rgb(91, 145, 88);
+            padding: 1px;
+        }
+        .topic {
+            overflow: hidden; /* Clearfix to contain floated elements */
+        }
+
+        .img {
+            float: right;
+            width: 200px; /* Adjust image width as needed */
+            margin-left: 20px; /* Add some space between image and paragraph */
+        }
+
+        .para {
+            overflow: hidden; /* Clearfix to contain floated elements */
+        }
+
+        nav {
+            background: linear-gradient(to bottom, #0082e6, #15c315);
+            height: 80px;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transform: perspective(1000px) rotateX(5deg);
+            transform-origin: top;  
+        }
+        nav img {
+            height: 110px;
+            width: 200px;
+            margin-left: 02px;
+        }
+        nav ul {
+            float: right;
+            margin-right: 20px;
+        }
+        nav ul li {
+            display: inline-block;
+            line-height: 80px;
+            margin: 0 5px;
+        }
+        nav ul li a {
+            color: white;
+            font-size: 17px;
+            padding: 7px 13px;
+            border-radius: 3px;
+            text-transform: uppercase;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+        nav ul li a:hover, nav ul li a.active {
+            background: rgb(4, 46, 171);
+            transform: translateY(-5px);    
+        }
+        .checkbtn {
+            font-size: 30px;
+            color: white;
+            float: right;
+            line-height: 80px;
+            margin-right: 40px;
+            cursor: pointer;
+            display: none;
+        }
+        #check {
+            display: none;
+        }
+        @media (max-width: 768px) {
+            nav ul {
+                position: fixed;
+                width: 100%;
+                height: 100vh;
+                background: #d0dde1;
+                top: 70px;
+                left: -100%;
+                text-align: center;
+                transition: all 0.5s;
+            }
+            nav ul li {
+                display: block;
+                margin: 40px 0;
+                line-height: 30px;
+            }
+            nav ul li a {
+                font-size: 20px;
+            }
+            nav ul li a:hover, nav ul li a.active {
+                background: none;
+                color: #1b9bff;
+            }
+            #check:checked ~ ul {
+                left: 0;
+            }
+            .checkbtn {
+                display: block;
+            }
+        }        
+        footer {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: auto;
+            background-color: #1b9bff; 
+            padding: 8px 2%;
+        }
+        ul {list-style: none;
+        }
+        .footer-col {
+            width: 25%;
+        }
+        .footer-col h4 {
+            position: relative;
+            margin-bottom: 10px;
+            font-weight: 400;
+            font-size: 20px;
+            color: white;
+            text-transform: capitalize;
+        }
+        .footer-col h4::before {
+            content: '';
+            position: absolute;
+            left: 2;
+            bottom: -6px;
+            background-color: #dda50d;
+            height: 2px;
+            width: 40px;
+        }
+        ul li:not(:last-child) {
+            margin-bottom: 8px;
+        }
+        ul li a {
+            display: block;
+            font-size: 19px;
+            text-transform: capitalize;
+            color: rgb(26, 15, 149);
+            text-decoration: none;
+            transition: 0.4s;
+        }
+        ul li a:hover {
+            color: white;
+            padding-left: 2px;
+        }
+        .links a {
+            display: inline-block;
+            height: 44px;
+            width: 44px;
+            color: rgb(243, 248, 243);
+            background-color: rgb(12, 216, 12);
+            margin: 0 8px 8px 0;
+            text-align: center;
+            line-height: 44px;
+            border-radius: 50%;
+            transition: 0.4s;
+        }
+        .links a:hover{
+            color: #4d4f55;
+            background-color: white;
+        }
+        @media(max-width: 740px){
+            .footer-col {
+                width: 50%;
+                margin-bottom: 30px;
+                text-align: center;
+            }
+            .footer-col h4::before{
+                all: unset;
+            }
+        }
+        @media(max-width: 555px){
+            .footer-col {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <img src="THISHU\images\website_logo-removebg-preview.png" alt="web logo">
+        <input type="checkbox" id="check" class="chekbtn">
+        <label for="check" class="checkbtn">
+            <i class="fas fa-bars"></i>
+        </label>
+        <ul>
+            <li><a href="home.html" >HOME</a></li>
+            <li><a href="gallery.html" >GALLERY</a></li>
+            <li><a href="product.html" >SHOP</a></li>
+            <li><a href="userprofile.html" >USER PROFILE</a></li>
+            <li><a href="feedback.html"  >FEEDBACK</a></li>
+            <li><a href="sitemap.html"  >SITE MAP</a></li>
+            <li><a href="team.html" >TEAM</a></li>
+            <li><a href="Editor.html" >Page Editor</a></li>
+            <li><a href="Content.html" >Content</a></li>
+        </ul>
+    </nav>
+    <div class="backg-image"></div>
+
+            <br><br>
+    <div class="center">
+        <h2>Brief idea about Good Health and well-being</h2>
+        <br>
+        <br>
+        <button class="button" onclick="showSection('nutrition')">Implement the who framework convention on tobacco control</button><br><br>
+        <button class="button" onclick="showSection('exercise')">Reduce illnesses and death from hazardous chemicals and pollution</button><br><br>
+        <button class="button" onclick="showSection('mental-health')">Reduce road injuries and deaths</button><br>
+        <br><br><br>
+
+        <div id="nutrition" class="fieldset-container">
+            <div class="topic1">
+                <div class="head"><h2>Implement the who framework convention on tobacco control</h2></div>
+
+                <div class="img">
+                    <img src="THISHU\images\tobacco.png" alt="Nutrition Image" width="157px" height="230px">
+                </div>
+
+                <div class="para">
+                    <p>The implementation of the WHO Framework Convention on Tobacco Control (FCTC) is crucial for global efforts to reduce the harmful effects of tobacco use. This convention, adopted in 2003 and currently ratified by over 180 countries, provides a comprehensive framework for tobacco control policies and measures.
+
+                        Key components of the FCTC include:
+                        
+                        1. **Demand reduction measures**: These focus on reducing tobacco consumption through strategies such as increasing tobacco taxes, implementing comprehensive bans on tobacco advertising, promotion, and sponsorship, and enforcing smoke-free policies in public places.
+                        
+                        2. **Supply reduction measures**: These aim to restrict the production and distribution of tobacco products, including regulations on tobacco packaging and labeling, as well as measures to combat illicit trade in tobacco products.
+                        
+                        3. **Protection of public health policies**: The FCTC emphasizes the importance of protecting public health policies from the influence of the tobacco industry, including measures to prevent conflicts of interest and ensure transparency in interactions between governments and the tobacco industry.
+                        
+                        4. **Provisions for international cooperation**: The convention encourages international collaboration and cooperation among countries in implementing tobacco control measures, sharing information and resources, and supporting capacity-building efforts, particularly in low- and middle-income countries.
+                        
+                        5. **Provisions for monitoring and evaluation**: The FCTC requires parties to regularly monitor and evaluate the implementation of tobacco control measures, as well as to share data and best practices to inform evidence-based policymaking.
+                        
+                        Overall, implementing the WHO FCTC is essential for reducing tobacco-related diseases, preventing premature deaths, and promoting public health and well-being worldwide. It requires concerted efforts from governments, civil society organizations, healthcare professionals, and other stakeholders to effectively address the tobacco epidemic and its devastating consequences.</p>    
+                </div>
+            </div>
+        </div>
+        <br>
+        <div id="exercise" class="fieldset-container">
+            <div class="topic1">
+                <div class="head"><h2>Reduce illnesses and death from hazardous chemicals and pollution</h2></div>
+                <div class="img">
+                    <img src="THISHU\images\chepol.png" alt="Exercise Image" width="170px" height="270px">
+                </div>
+
+                <div class="para">
+                    <p>Reducing illnesses and deaths from hazardous chemicals and pollution requires a multi-faceted approach that involves various stakeholders, including governments, industries, communities, and individuals. Some key strategies to address this issue include:
+
+                        1. **Regulation and Legislation**: Implementing and enforcing regulations and legislation to control the production, use, and disposal of hazardous chemicals and pollutants. This includes setting standards for air and water quality, hazardous waste management, and chemical safety in workplaces.
+                        
+                        2. **Pollution Prevention**: Promoting pollution prevention practices, such as cleaner production methods, waste minimization, and substitution of hazardous chemicals with safer alternatives. Encouraging industries to adopt eco-friendly technologies and practices can help reduce the release of pollutants into the environment.
+                        
+                        3. **Public Awareness and Education**: Raising awareness among the public about the health risks associated with exposure to hazardous chemicals and pollution. Educating communities about ways to minimize exposure, such as using protective equipment, reducing reliance on harmful products, and adopting sustainable lifestyles, can empower individuals to protect themselves and their families.
+                        
+                        4. **Healthcare and Treatment**: Providing access to healthcare services for those affected by exposure to hazardous chemicals and pollution. This includes medical treatment, rehabilitation, and support services for individuals suffering from pollution-related illnesses. Investing in healthcare infrastructure and capacity-building in affected communities is essential to ensure timely and effective healthcare delivery.
+                        
+                        5. **Research and Monitoring**: Conducting research to better understand the health impacts of exposure to hazardous chemicals and pollution, as well as monitoring environmental quality and human exposure levels. This data can inform evidence-based policymaking, identify emerging threats, and evaluate the effectiveness of pollution control measures.
+                        
+                        6. **International Cooperation**: Collaborating with other countries and international organizations to address transboundary pollution issues and promote global initiatives for pollution control and prevention. Sharing knowledge, resources, and best practices can help strengthen national efforts and achieve collective goals in reducing illnesses and deaths from hazardous chemicals and pollution.
+                        
+                        By implementing these strategies and fostering collaboration among stakeholders at the local, national, and international levels, significant progress can be made in reducing the adverse health effects of hazardous chemicals and pollution and creating healthier and more sustainable environments for current and future generations.</p>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div id="mental-health" class="fieldset-container">
+            <div class="topic1">
+                <div class="head"><h2>Reduce road injuries and deaths</h2></div>
+
+                <div class="img">
+                    <img src="THISHU\images\road.png" alt="Exercise Image" width="170px" height="270px">
+                </div>
+                <div class="para">
+                    <p>Reducing road injuries and deaths requires a comprehensive approach that addresses various factors contributing to traffic accidents. Here are some key strategies:
+
+                        1. **Road Safety Education**: Implement educational programs to raise awareness about road safety practices among drivers, pedestrians, cyclists, and other road users. Education should emphasize the importance of obeying traffic laws, wearing seat belts, using helmets, and avoiding distracted or impaired driving.
+                        
+                        2. **Infrastructure Improvements**: Invest in improving road infrastructure to enhance safety for all road users. This includes constructing and maintaining safe roads, sidewalks, and bike lanes, installing traffic signs and signals, and implementing measures to calm traffic and reduce speed in high-risk areas.
+                        
+                        3. **Enforcement of Traffic Laws**: Strengthen enforcement of traffic laws to deter risky behaviors and promote compliance with regulations. This may involve increased police presence, enforcement of speed limits, crackdowns on drunk driving and distracted driving, and penalties for traffic violations.
+                        
+                        4. **Vehicle Safety Standards**: Implement and enforce regulations on vehicle safety standards, including requirements for seat belts, airbags, anti-lock braking systems (ABS), and electronic stability control (ESC). Encourage the adoption of newer vehicles equipped with advanced safety features.
+                        
+                        5. **Public Transportation and Alternative Modes**: Promote the use of public transportation and alternative modes of transportation, such as walking and cycling, to reduce reliance on private vehicles. Improving public transit services and infrastructure can help decrease the number of vehicles on the road and mitigate traffic congestion and accidents.
+                        
+                        6. **Community Engagement and Partnerships**: Engage communities, NGOs, businesses, and other stakeholders in road safety initiatives. Foster partnerships to implement targeted interventions, such as safe routes to school programs, community-based awareness campaigns, and initiatives to address specific road safety challenges in vulnerable populations.
+                        
+                        7. **Data Collection and Analysis**: Collect and analyze data on road traffic injuries and fatalities to identify trends, risk factors, and priority areas for intervention. Use data-driven approaches to inform road safety policies, interventions, and resource allocation.
+                        
+                        8. **International Collaboration**: Collaborate with other countries and international organizations to share best practices, expertise, and resources in road safety. Participate in global initiatives, such as the United Nations Decade of Action for Road Safety, to work towards shared goals of reducing road injuries and deaths worldwide.
+                        
+                        By implementing these strategies and fostering collaboration among stakeholders at the local, national, and international levels, significant progress can be made in reducing road injuries and deaths and creating safer road environments for all.</p>
+                </div>
+            </div>
+        </div> 
+    </div>
+    
+    <footer>
+        <div class="footer-col">
+            <h4><b>Shop</b></h4>
+            <ul>
+                <li><a href="#"><b>T-Shirts</b></a></li>
+                <li><a href="#"><b>Water Bottle</b></a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4><b>Gallery</b></h4>
+            <ul>
+                <li><a href="#"><b>Healthy Activities</b></a></li>
+                <li><a href="#"><b>Unhealthy Activities</b></a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4><B>Team</B></h4>
+            <ul>
+                <li><a href="#"><b>about</b></a></li>
+                <li><a href="#"><b>contact us</b></a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4><B>Follow Us</B></h4>
+            <div class="links">
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+        <p>&copy; 2024 YourWebsiteName. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function showSection(sectionId) {
+            // Hide all sections
+            var sections = document.querySelectorAll('div[id^=""]');
+            sections.forEach(function (section) {
+                section.classList.add('hidden');
+            });
+
+            // Show the selected section
+            var selectedSection = document.getElementById(sectionId);
+            if (selectedSection) {
+                selectedSection.classList.remove('hidden');
+                // Scroll to the selected section
+                selectedSection.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+    </script>
+</body>
+</html>
