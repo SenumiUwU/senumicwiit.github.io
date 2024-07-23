@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop Example</title>
+    <style>
+         /* Global styles */
+        * {
+            padding: 0;
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            text-decoration: none;
+            list-style: none;
+            box-sizing: border-box;
+            line-height: 1.2;
+        }
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+         /* Navigation bar styles */
+        nav {
+            background: linear-gradient(to bottom, #0082e6, #15c315);
+            height: 80px;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transform: perspective(1000px) rotateX(5deg);
+            transform-origin: top;  
+            margin-bottom: 20px;
+        }
+        nav img {
+            height: 100px;
+            margin-left: 1em;
+        }    
+        nav ul {
+            float: right;
+            margin-right: 20px;
+        }
+        nav ul li {
+            display: inline-block;
+            line-height: 80px;
+            margin: 0 5px;
+        }
+        nav ul li a {
+            color: white;
+            font-size: 17px;
+            padding: 7px 13px;
+            border-radius: 3px;
+            text-transform: uppercase;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+        nav ul li a:hover, nav ul li a.active {
+            background: rgb(4, 46, 171);
+            transform: translateY(-5px);    
+        }
+        .checkbtn {
+            font-size: 30px;
+            color: white;
+            float: right;
+            line-height: 80px;
+            margin-right: 40px;
+            cursor: pointer;
+            display: none;
+        }
+        #check {
+            display: none;
+        }
+        /* Responsive navigation bar styles */
+        @media (max-width: 768px) {
+            nav ul {
+                position: fixed;
+                width: 100%;
+                height: 100vh;
+                background: #078fb8;
+                top: 80px;
+                left: -100%;
+                text-align: center;
+                transition: all 0.5s;
+            }
+            nav ul li {
+                display: block;
+                margin: 40px 0;
+                line-height: 30px;
+            }
+            nav ul li a {
+                font-size: 20px;
+            }
+            nav ul li a:hover, nav ul li a.active {
+                background: none;
+                color: #1b9bff;
+            }
+            #check:checked ~ ul {
+                left: 0;
+            }
+            .checkbtn {
+                display: block;
+            }
+
+        } 
+        /* Header styles */   
+        header {
+            background-color: #333;
+            color: white;
+            padding: 1em;
+            text-align: center;
+        }
+
+        
+        /* Container for products */
+        .container {
+            margin-top: 100px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 2em;
+            flex: 1;
+        }
+        /* Individual product card styles */
+        .product {
+            background-color: rgb(21, 119, 86);
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin: 1em;
+            padding: 1em;
+            width: 200px;
+            text-align: center;
+        }
+
+        .product img {
+            max-width: 100%;
+            height: auto;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 1em;
+        }
+
+        .product h2 {
+            font-size: 1.2em;
+            margin: 0.5em 0;
+        }
+
+        .product p {
+            color: #888;
+            margin: 0.5em 0;
+        }
+
+        .product button {
+            background-color: #4CAF50;      
+            color: rgb(9, 1, 1);
+            border: none;
+            padding: 0.5em 1em;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+         /* Cart styles */
+        .cart {
+            position: fixed;
+            top: 80px; /* Align with the height of the navigation bar */
+            right: 10px;
+            background-color: #f7efef;
+            padding:  30px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+        }
+
+        .cart h2 {
+            margin-top: 0;
+        }
+
+        .cart ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .cart ul li {
+            margin: 0.5em 0;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .cart ul li span {
+            margin-right: 10px;
+        }
+
+        .cart ul li button {
+            background-color: #ff0000;
+            color: white;
+            border: none;
+            padding: 0.2em 0.5em;
+            cursor: pointer;
+            border-radius: 3px;
+        }
+
+        .cart button{
+            background-color: #0812d6;
+            color: white;
+            border: none;
+            padding: 0.2em 0.5em;
+            cursor: pointer;
+            border-radius: 3px;
+
+        }
+        /* Footer styles */
+        footer {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: auto;
+            background-color: #1b9bff; 
+            padding: 8px 2%;
+        }
+        ul {list-style: none;
+        }
+        .footer-col {
+            width: 25%;
+        }
+        .footer-col h4 {
+            position: relative;
+            margin-bottom: 10px;
+            font-weight: 400;
+            font-size: 20px;
+            color: white;
+            text-transform: capitalize;
+        }
+        .footer-col h4::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -6px;
+            background-color: #dda50d;
+            height: 2px;
+            width: 40px;
+        }
+        ul li:not(:last-child) {
+            margin-bottom: 8px;
+        }
+        ul li a {
+            display: block;
+            font-size: 19px;
+            text-transform: capitalize;
+            color: rgb(26, 15, 149);
+            text-decoration: none;
+            transition: 0.4s;
+        }
+        ul li a:hover {
+            color: white;
+            padding-left: 2px;
+        }
+        .links a {
+            display: inline-block;
+            height: 44px;
+            width: 44px;
+            color: white;
+            background-color: rgb(43, 195, 46);
+            margin: 0 8px 8px 0;
+            text-align: center;
+            line-height: 44px;
+            border-radius: 50%;
+            transition: 0.4s;
+        }
+        .links a:hover{
+            color: #4d4f55;
+            background-color: white;
+        }
+        /* Responsive footer styles */
+        @media(max-width: 740px){
+            .footer-col {
+                width: 50%;
+                margin-bottom: 30px;
+                text-align: center;
+            }
+            .footer-col h4::before{
+                all: unset;
+            }
+        }
+        @media(max-width: 555px){
+            .footer-col {
+                width: 100%;
+            }
+        }
+
+        ul li:not(:last-child) {
+            margin-bottom: 8px;
+        }
+
+        ul li a {
+            display: block;
+            font-size: 19px;
+            text-transform: capitalize;
+            color: rgb(26, 15, 149);
+            text-decoration: none;
+            transition: 0.4s;
+        }
+
+        ul li a:hover {
+            color: rgb(14, 9, 9);
+            padding-left: 2px;
+        }
+
+        .links a {
+            display: inline-block;
+            height: 44px;
+            width: 44px;
+            color: rgb(245, 237, 237);
+            background-color: rgb(43, 195, 46);
+            margin: 0 8px 8px 0;
+            text-align: center;
+            line-height: 44px;
+            border-radius: 50%;
+            transition: 0.4s;
+        }
+
+        .links a:hover{
+            color: #4d4f55;
+            background-color: rgb(248, 244, 244);
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .checkout {
+            background-color: white;
+            padding: 2em;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .checkout label {
+            display: block;
+            margin-bottom: 0.5em;
+            text-align: left;
+        }
+
+        .checkout input {
+            width: 100%;
+            padding: 0.5em;
+            margin-bottom: 1em;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            box-sizing: border-box;
+        }
+
+        .checkout button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 0.5em 1em;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .order-confirmation {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .order-confirmation .confirmation-content {
+            background-color: white;
+            padding: 2em;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .order-confirmation .confirmation-content h2 {
+            margin-bottom: 1em;
+        }
+
+        .order-confirmation .confirmation-content p {
+            margin-bottom: 0.5em;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to CaptainFit</h1>
+    </header>
+    <nav>
+        <img src="logohw.png" alt="web logo" style="height: 100px; margin-right: 1em;">
+        <input type="checkbox" id="check" class="checkbtn">
+        <label for="check" class="checkbtn">
+            <i class="fas fa-bars"></i>
+        </label>
+        <ul>
+            <li><a href="#">HOME</a></li>
+            <li><a href="#">GALLERY</a></li>
+            <li><a href="#">SHOP</a></li>
+            <li><a href="#">USER PROFILE</a></li>
+            <li><a href="#">FEEDBACK</a></li>
+            <li><a href="#">SITE MAP</a></li>
+            <li><a href="#">TEAM</a></li>
+            <li><a href="pageeditor.html">Page Editor</a></li>
+            <li><a href="content(1).html">Content</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+    
+        <div class="product">
+            <img src="produc1.png" alt="Product 1">
+            <h2>Unisex Cotton Crew Tee</h2>
+            <p>$19.99</p>
+            <button onclick="addToCart('Unisex Cotton Crew Tee', 19.99)">Add to Cart</button>
+            <button onclick="showCheckout('Unisex Cotton Crew Tee', 19.99)">Buy</button>
+        </div>
+        <div class="product">
+            <img src="product2.png" alt="Product 2">
+            <h2>Unisex Zip Hoodie (AOP)</h2>
+            <p>$24.99</p>
+            <button onclick="addToCart('Unisex Zip Hoodie (AOP)', 24.99)">Add to Cart</button>
+            <button onclick="showCheckout('Unisex Zip Hoodie (AOP)', 24.99)">Buy</button>
+        </div>
+        <div class="product">
+            <img src="product3.png" alt="Product 3">
+            <h2>Basketball Jersey (AOP)</h2>
+            <p>$29.99</p>
+            <button onclick="addToCart('Basketball Jersey (AOP)', 29.99)">Add to Cart</button>
+            <button onclick="showCheckout('Basketball Jersey (AOP)', 29.99)">Buy</button>
+        </div>
+        <div class="product">
+            <img src="product4.png" alt="Product 4">
+            <h2>Unisex Mineral Wash Hoodie</h2>
+            <p>$34.99</p>
+            <button onclick="addToCart('Unisex Mineral Wash Hoodie', 34.99)">Add to Cart</button>
+            <button onclick="showCheckout('Unisex Mineral Wash Hoodie', 34.99)">Buy</button>
+        </div>
+        <div class="product">
+            <img src="product5.png" alt="Product 5">
+            <h2>Dad Hat with Leather Patch (Rectangle)</h2>
+            <p>$14.99</p>
+            <button onclick="addToCart('Dad Hat with Leather Patch (Rectangle)', 14.99)">Add to Cart</button>
+            <button onclick="showCheckout('Dad Hat with Leather Patch (Rectangle)', 14.99)">Buy</button>
+        </div>
+        <div class="product">
+            <img src="product6.png" alt="Product 6">
+            <h2>Duffel Bag</h2>
+            <p>$12.99</p>
+            <button onclick="addToCart('Duffel Bag', 12.99)">Add to Cart</button>
+            <button onclick="showCheckout('Duffel Bag', 12.99)">Buy</button>
+        </div>
+        <div class="product">
+            <img src="product7.png" alt="Product 6">
+            <h2>Copper Vacuum Insulated Bottle</h2>
+            <p>$12.99</p>
+            <button onclick="addToCart('Copper Vacuum Insulated Bottle', 12.99)">Add to Cart</button>
+            <button onclick="showCheckout('Copper Vacuum Insulated Bottle', 12.99)">Buy</button>
+        </div>
+        <div class="product">
+            <img src="product8.png" alt="Product 6">
+            <h2>Ceramic Mug</h2>
+            <p>$12.99</p>
+            <button onclick="addToCart('Ceramic Mug', 12.99)">Add to Cart</button>
+            <button onclick="showCheckout('Ceramic Mug', 12.99)">Buy</button>
+        </div>
+        <!-- Add other products similarly -->
+    </div>
+
+    <div class="cart" id="cart">
+        <h2>Cart</h2>
+        <ul id="cart-items"></ul>
+        <p>Total: $<span id="cart-total">0.00</span></p>
+        <button onclick="showCheckoutCart()">Checkout</button>
+    </div>
+    
+    <div class="overlay" id="checkoutOverlay">
+        <div class="checkout">
+            <h2>Checkout</h2>
+            <form id="checkoutForm">
+                <label for="Name">Name:</label>
+                <input type="text" id="Name" name="Name" required>
+
+                <label for="Credit Card">Credit Card:</label>
+                <input type="text" id="Credit Card" name="Credit Card" required>
+
+                <label for="CVV">CVV:</label>
+                <input type="text" id="CVV" name="CVV" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="address">Address:</label>
+                <textarea id="address" name="address" rows="4" required></textarea>
+
+                <button type="button" onclick="confirmPurchase()">Confirm Purchase</button>
+                <button type="button" onclick="closeCheckout()">Cancel</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="order-confirmation" id="orderConfirmation">
+        <div class="confirmation-content">
+            <h2>Order Confirmation</h2>
+            <p id="orderSummary"></p>
+            <p id="customerInfo"></p>
+            <button onclick="closeConfirmation()">Close</button>
+        </div>
+        </div>
+
+    <!-- Footer section -->
+    <footer>
+        <div class="footer-col">
+            <h4><b>Shop</b></h4>
+            <ul>
+                <li><a href="#"><b>T-Shirts</b></a></li>
+                <li><a href="#"><b>Water Bottle</b></a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4><b>Gallery</b></h4>
+            <ul>
+                <li><a href="#"><b>Healthy Activities</b></a></li>
+                <li><a href="#"><b>Unhealthy Activities</b></a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4><B>Team</B></h4>
+            <ul>
+                <li><a href="#"><b>about</b></a></li>
+                <li><a href="#"><b>contact us</b></a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4><B>Follow Us</B></h4>
+            <div class="links">
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+        <p>&copy; 2024 YourWebsiteName. All rights reserved.</p>
+    </footer>
+
+
+    <script>
+        let cart = [];
+        let cartTotal = 0;
+    
+        function addToCart(name, price) {
+            const item = { name, price };
+            cart.push(item);
+            updateCart();
+        }
+    
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCart();
+        }
+    
+        function updateCart() {
+            const cartItems = document.getElementById('cart-items');
+            cartItems.innerHTML = '';
+    
+            cartTotal = 0;
+            cart.forEach((item, index) => {
+                const li = document.createElement('li');
+                li.innerHTML = `<span>${item.name}</span> $${item.price.toFixed(2)} <button onclick="removeFromCart(${index})">Remove</button>`;
+                cartItems.appendChild(li);
+                cartTotal += item.price;
+            });
+    
+            document.getElementById('cart-total').innerText = cartTotal.toFixed(2);
+        }
+    
+        function showCheckout(productName, productPrice) {
+            const item = { name: productName, price: productPrice };
+            cart.push(item);
+            cartTotal += productPrice;
+            document.getElementById('cart-total').innerText = cartTotal.toFixed(2); // Explicitly update cart total display
+    
+            document.getElementById('checkoutOverlay').style.display = 'flex';
+        }
+    
+        function showCheckoutCart() {
+            if (cart.length > 0) {
+                document.getElementById('checkoutOverlay').style.display = 'flex';
+            } else {
+                alert('Your cart is empty.');
+            }
+        }
+    
+        function closeCheckout() {
+            document.getElementById('checkoutOverlay').style.display = 'none';
+        }
+    
+        function confirmPurchase() {
+            const name = document.getElementById('Name').value;
+            const creditCard = document.getElementById('Credit Card').value;
+            const cvv = document.getElementById('CVV').value;
+            const email = document.getElementById('email').value;
+            const address = document.getElementById('address').value;
+    
+            if (!name || !creditCard || !cvv || !email || !address) {
+                alert('Please fill in all the details.');
+                return;
+            }
+    
+            document.getElementById('checkoutOverlay').style.display = 'none';
+    
+            const orderSummary = cart.map(item => `<li>${item.name} - $${item.price.toFixed(2)}</li>`).join('');
+            document.getElementById('orderSummary').innerHTML = `<ul>${orderSummary}</ul><p>Total: $${cartTotal.toFixed(2)}</p>`;
+            document.getElementById('customerInfo').innerHTML = `<p>Name: ${name}</p><p>Email: ${email}</p><p>Address: ${address}</p>`;
+    
+            document.getElementById('orderConfirmation').style.display = 'flex';
+    
+            // Clear the cart and reset total
+            cart = [];
+            cartTotal = 0;
+            updateCart();
+        }
+    
+        function closeConfirmation() {
+            document.getElementById('orderConfirmation').style.display = 'none';
+        }
+    </script>
+    
+</body>
+</html>

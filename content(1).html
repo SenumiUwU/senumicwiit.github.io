@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>ContentStudent4</title>
+
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    height: 150px;
+}
+/* Navigation bar styles */
+nav {
+    background: linear-gradient(to bottom, #0082e6, #15c315);
+    height: 80px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transform: perspective(1000px) rotateX(5deg);
+    transform-origin: top;  
+    margin-bottom: 20px;
+}
+nav img {
+    height: 100px;
+    margin-left: 1em;
+}    
+nav ul {
+    float: right;
+    margin-right: 20px;
+}
+nav ul li {
+    display: inline-block;
+    line-height: 80px;
+    margin: 0 5px;
+}
+nav ul li a {
+    color: white;
+    font-size: 17px;
+    padding: 7px 13px;
+    border-radius: 3px;
+    text-transform: uppercase;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+nav ul li a:hover, nav ul li a.active {
+    background: rgb(4, 46, 171);
+    transform: translateY(-5px);    
+}
+.checkbtn {
+    font-size: 30px;
+    color: white;
+    float: right;
+    line-height: 80px;
+    margin-right: 40px;
+    cursor: pointer;
+    display: none;
+}
+#check {
+    display: none;
+}
+/* Responsive navigation bar styles */
+@media (max-width: 768px) {
+    nav ul {
+        position: fixed;
+        width: 100%;
+        height: 100vh;
+        background: #078fb8;
+        top: 80px;
+        left: -100%;
+        text-align: center;
+        transition: all 0.5s;
+    }
+    nav ul li {
+        display: block;
+        margin: 40px 0;
+        line-height: 30px;
+    }
+    nav ul li a {
+        font-size: 20px;
+    }
+    nav ul li a:hover, nav ul li a.active {
+        background: none;
+        color: #1b9bff;
+    }
+    #check:checked ~ ul {
+        left: 0;
+    }
+    .checkbtn {
+        display: block;
+    }
+
+} 
+
+#search {
+    padding: 5px;
+    font-size: 17px;
+    border: 2px solid grey;
+    border-radius: 9px;
+}
+
+.firstsection {
+    background-color: white;
+    height: 400px;
+}
+
+.secondsection {
+    background-color: rgb(201, 233, 201) ;
+    height: 400px;
+}
+
+.thirdsection {
+    background-color: white;
+    height: 400px;
+}
+
+
+.box-main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    max-width: 80%;
+    margin: auto;
+    height: 80%;
+}
+
+.firsthalf {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+.text-big {
+    font-family: 'Piazzolla', serif;
+    font-weight: bold;
+    font-size: 35px;
+    color: darkgreen;
+}
+
+.text-small {
+    font-size: 18px;
+}
+
+.btn {
+    padding: 8px 20px;
+    margin: 7px 0;
+    border: 2px solid white;
+    border-radius: 8px;
+    background: none;
+    color: white;
+    cursor: pointer;
+}
+
+.btn-sm {
+    padding: 6px 10px;
+    vertical-align: middle;
+}
+
+.section-Left {
+    flex-direction: row-reverse;
+}
+
+.paras {
+    padding: 0px 65px;
+}
+
+.thumbnail img {
+    width: 250px;
+    border: 2px solid black;
+    border-radius: 26px;
+    margin-top: 19px;
+}
+
+.center {
+    text-align: center;
+}
+
+
+
+
+
+#search {
+    box-sizing: border-box;
+    width: 70%;
+    padding: 8px;
+    font-size: 17px;
+    border: 2px solid grey;
+    border-radius: 9px;
+}
+
+.btn-sm {
+    padding: 8px 20px;
+    margin: 7px 5px;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.picture {
+    height: 200px;
+    width: 200px;
+    padding: 5px 5px 5px 5px;
+    box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    float: left;
+    margin-right: 25px;
+}
+
+.main {
+    max-width: auto;
+    margin: 0 auto;
+    padding: 0;
+}
+.navbar {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 999;        
+}        
+.icon {
+    width: 150px;
+}
+.logo {
+    width: 100%;
+    height: auto;
+}
+.menu ul {
+    list-style-type: none;
+    display: flex;
+}
+.menu ul li {
+    margin-right: 20px;
+}
+.menu ul li a {
+    text-decoration: none;
+    font-size: 20px;
+    color: #fff;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+.menu ul li a:hover {
+    color: lightgreen;
+}
+.dropdown select {
+    background-color: #333;
+    padding: 2px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 20px;
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+.dropdown select:hover {
+    background-color: #45a049;
+}
+.dropdown select option {
+    background-color: #333;
+    font-size: 16px;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+}
+.dropdown select option:hover {
+    background-color: #111;
+}
+    /* Footer styles */
+footer {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: auto;
+    background-color: #1b9bff; 
+    padding: 8px 2%;
+}
+ul {list-style: none;
+}
+.footer-col {
+    width: 25%;
+}
+.footer-col h4 {
+    position: relative;
+    margin-bottom: 10px;
+    font-weight: 400;
+    font-size: 20px;
+    color: white;
+    text-transform: capitalize;
+}
+.footer-col h4::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    background-color: #dda50d;
+    height: 2px;
+    width: 40px;
+}
+ul li:not(:last-child) {
+    margin-bottom: 8px;
+}
+ul li a {
+    display: block;
+    font-size: 19px;
+    text-transform: capitalize;
+    color: rgb(26, 15, 149);
+    text-decoration: none;
+    transition: 0.4s;
+}
+ul li a:hover {
+    color: white;
+    padding-left: 2px;
+}
+.links a {
+    display: inline-block;
+    height: 44px;
+    width: 44px;
+    color: white;
+    background-color: rgb(43, 195, 46);
+    margin: 0 8px 8px 0;
+    text-align: center;
+    line-height: 44px;
+    border-radius: 50%;
+    transition: 0.4s;
+}
+.links a:hover{
+    color: #4d4f55;
+    background-color: white;
+}
+    </style>
+
+</head>
+
+<body>
+    <header>
+    <div class="main">
+        <nav>
+            <img src="logohw.png" alt="web logo" style="height: 100px; margin-right: 1em;">
+            <input type="checkbox" id="check" class="checkbtn">
+            <label for="check" class="checkbtn">
+                <i class="fas fa-bars"></i>
+            </label>
+            <ul>
+                <li><a href="#">HOME</a></li>
+                <li><a href="#">GALLERY</a></li>
+                <li><a href="shop.html">SHOP</a></li>
+                <li><a href="#">USER PROFILE</a></li>
+                <li><a href="#">FEEDBACK</a></li>
+                <li><a href="#">SITE MAP</a></li>
+                <li><a href="#">TEAM</a></li>
+                <li><a href="pageeditor.html">Page Editor</a></li>
+                <li><a href="content(1).html">Content</a></li>
+            </ul>
+        </nav>
+
+    </nav>
+    </header>
+
+    <section class="firstsection">
+        <div class="box-main">
+            <div class="firstHalf">
+                <h1 class="text-big" id="Nutrition and Diet">Nutrition and Healthy Eating
+                </h1><br>
+                <p class="text-small">
+                    <img class="picture" src="healthy-food.png" slt="nutrition" style="float: left;"><br>
+                    Proper nutrition is fundamental to good health and well-being. This subtopic covers the significance of a balanced diet, the benefits of consuming a variety of fruits, vegetables, whole grains, and lean proteins, and the impact of nutrition on energy levels, mental clarity, and overall physical health. It also explores the dangers of poor dietary habits and offers tips for making healthier food choices, meal planning, and understanding nutritional labels.
+                </p>
+
+
+            </div>
+        </div>
+    </section>
+
+    <section class="secondsection">
+        <div class="box-main">
+            <div class="firstHalf">
+                <h1 class="text-big" id="Physical Activity">Physical Activity
+                </h1>
+                <p class="text-small">
+                    <img class="picture" src="excercise.png" slt="nutrition" style="float: right;"><br>
+                    Regular physical activity is essential for maintaining a healthy body and mind. This subtopic focuses on the various forms of exercise, including cardiovascular, strength training, flexibility, and balance exercises. It highlights the benefits of staying active, such as improved cardiovascular health, stronger muscles, better mood, and increased energy levels. Guidance on creating a sustainable workout routine and the importance of finding enjoyable physical activities can also be included.
+            </div>
+        </div>
+    </section>
+
+    <section class="thirdsection">
+        <div class="box-main">
+            <div class="firstHalf">
+                <h1 class="text-big" id="Mental Health and Relaxation">
+                    Preventive Health Care
+                </h1><br>
+                <p class="text-small">
+                    <img class="picture" src="prevention.png" slt="nutrition" style="float: left;"><br>
+                    Preventive health care involves taking proactive measures to prevent illnesses and maintain optimal health. This subtopic includes the importance of regular health check-ups, vaccinations, screenings, and adopting healthy lifestyle habits to prevent chronic diseases. It emphasizes the role of preventive care in detecting health issues early and managing them effectively, leading to better long-term health outcomes.
+                </p>
+            </div>
+        </div>
+    </section>
+
+ 
+    <footer>
+        <div class="footer-col">
+            <h4><b>Shop</b></h4>
+            <ul>
+                <li><a href="#"><b>T-Shirts</b></a></li>
+                <li><a href="#"><b>Water Bottle</b></a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4><b>Gallery</b></h4>
+            <ul>
+                <li><a href="#"><b>Healthy Activities</b></a></li>
+                <li><a href="#"><b>Unhealthy Activities</b></a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4><B>Team</B></h4>
+            <ul>
+                <li><a href="#"><b>about</b></a></li>
+                <li><a href="#"><b>contact us</b></a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4><B>Follow Us</B></h4>
+            <div class="links">
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+        <p>&copy; 2024 YourWebsiteName. All rights reserved.</p>
+    </footer>
+
+</body>
+
+</html>
