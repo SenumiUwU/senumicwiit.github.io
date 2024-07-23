@@ -1,176 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Life on Land</title>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Editor</title>
     <style>
+        
+
+
         body {
-            background-image: url("Pics/pageeditor/background.jpg");
-            background-attachment: fixed;
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        .background-image {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background-image: url('green.jpg');
             background-size: cover;
             background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        header {
+            padding: 20px 0;
+        }
+
+        header h1 {
+            margin-bottom: 5px;
         }
 
         main {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-
-        }
-
-        .user {
-            position: relative;
-            display: flex;
-            gap: 20px;
-            width: 1500px;
-            height: 700px;
-            border-radius: 30px;
-            background-color: rgba(33, 33, 42, 0.9);
-        }
-
-        .user img {
-            position: absolute;
-            height: 500px;
-            border-radius: 30px;
-            top: 50%;
-            left: 70%;
-            transform: translate(-50%, -50%); 
-        }
-
-        .details {
-            position: absolute;
-            top: 25%;
-            margin-left: 180px;
-        }
-
-        h1 {
-            color: white;
-            font-size: 50px;
-            font-family: Georgia, 'Times New Roman', Times, serif;
-        }
-
-        h2 {
-            color: rgb(216, 187, 19);
-            font-size: 40px;
-            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-        }
-
-        h3 {
-            color: white;
-            font-size: 30px;
-        }
-
-        .pages {
-            position: relative;
-            display: flex;
-            width: 1500px;
-            height: 700px;
-            margin-top: 40px;
-            padding-top: 90px;
-            padding-bottom: 90px;
-            border-radius: 30px;
-            background-color: rgba(33, 33, 42, 0.9);
-            justify-content: center;
-            align-items: center;
-        }
-
-        #pagedown {
-            height: 20px;
-            font-weight: bold;
-            display: inline;
-            background-color: gold;
-            color: black;
-            border-radius: 5px;
-            padding: 8px 16px;
-            margin-left: 50px;
-        }
-
-        #heading {
-            color: gold;
-            margin-left: 50px;
-            font-size: 30px;
-            font-weight: bold;
-        }
-
-        .gallery, .sitemap, .contentpage {
-            margin-top: 20px;
-            background-color: rgba(63, 63, 59, 0.5);
-            width: 25%;
-            height: 750px;
-            border-radius: 30px;
-            margin-right: 50px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        #gpic, #spic, #cpic {
-            height: 300px;
-        }
-
-        #topic1, #topic2, #topic3 {
-            text-align: center;
-            font-weight: bold;
-            padding-top: 20px;
-            color: gold;
-            font-size: 50px;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        #content1, #content2, #content3 {
-            color: white;
-            text-align: start;
-            font-size: 20px;
             padding: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
         }
 
-        .card-button {
+        .feature {
+            max-width: 600px;
+            margin: 20px;
+            padding: 20px;
+            border: 5px solid rgb(49, 74, 49);
+            border-radius: 20px;
+            text-align: left;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .feature h2 {
+            margin-top: 0;
+        }
+
+        .feature p {
+            line-height: 1.6;
+        }
+
+        .button {
             display: inline-block;
-            background-color: gold;
-            color: black;
-            border-radius: 5px;
-            padding: 8px 16px;
-            margin-bottom: 20px;
-            text-align: center;
+            background-color: rgb(2, 68, 2);
+            color: white;
+            padding: 10px 20px;
             text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        .button:hover {
+            background-color: rgb(19, 48, 19);
         }
     </style>
 </head>
 <body>
-<main>
-    <a href="#topic1" id="pagedown">PAGEDOWN</a>
-    <div class="user">
-        <img src="myphoto.png" id="propic" alt="">
-        <div class="details">
-            <h1>Manuga Chanketh <br> Munasingha</h1>
-            <h2>IIT ID : 20230726 <br> UOW ID: W2083183</h2>
-            <h3>Role : Student 1</h3>
-        </div>
+
+    
         
-    </div>
-    <div class="pages">
-        <div class="splashscreeen">
-            <p id="topic1">SplashScreen</p>
-            <img src="splash-page.png" id="gpic" alt="">
-            <p id="content1">I created a SplashScreen using HTML, CSS, and JavaScript. I created this to display our website name and then to display our mission and team members</p>
-            <a href="splash.html" class="card-button">Link to SplashScreen</a>
-        </div>
-        <div class="shop">
-            <p id="topic2">Shop</p>
-            <img src="shop.png" id="spic" alt="">
-            <p id="content2">I created the shop using HTML,CSS and JavaScript. I added few products, a cart and after purchasing it displays a order confirmation
-                 </p>
-            <a href="shop.html" class="card-button">Link to shop</a>
-            
-        </div>
-        <div class="contentpage">
-            <p id="topic3">CONTENT PAGE</p>
-            <img src="browser.png" id="cpic" alt="">
-            <p id="content3">I created a Content page using HTML, CSS, and JavaScript. I made some contents related to Good health and well beingt.</p>
-            <a href="content(1).html" class="card-button">Link to Content Page</a>
-        </div>
-    </div>
-</main>
+    
+    <div class="background-image"></div>
+
+    <header>
+        <h1>Page Editor</h1>
+        <p>Name: Tilan wishwajith</p>
+        <p>Role: Student 04</p>
+        <p><i>These pages are created by me.</i></p>
+    </header>
+
+    <main>
+        <section class="feature">
+            <h2>GALLERY</h2>
+            <p>
+                I created a gallery using HTML, CSS, and JavaScript. It features clickable thumbnails that open images with detailed descriptions. The design is responsive, ensuring the gallery looks great on any device. This interactive and visually appealing gallery enhances the user experience with seamless navigation and accessibility.
+            </p>
+            <a href="gallery.html" class="button">View Gallery</a>
+        </section>
+
+        <section class="feature">
+            <h2>Sitemap</h2>
+            <p>
+                I created a sitemap using HTML, CSS, and JavaScript, and developed a flow chart with SVG to link all the pages of the website. This provides clear navigation and enhances user experience. The sitemap also helps search engines index the site effectively, improving its visibility. Integrating these technologies ensures the website is user-friendly and easily discoverable.
+            </p>
+            <a href="sitemap.html" class="button">View Sitemap</a>
+        </section>
+    </main>
+
+    <footer>
+        <!-- Footer content here -->
+    </footer>
 </body>
 </html>

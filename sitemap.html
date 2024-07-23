@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="sitemap.css">
+    <title>Visual Sitemap</title>
+</head>
+<body>
+    <nav>
+        <img src="logoimg.png" alt="web logo">
+        <input type="checkbox" id="check" class="checkbtn">
+        <label for="check" class="checkbtn">
+            <i class="fas fa-bars"></i>
+        </label>
+        <ul>
+            <li><a href="home.html">HOME</a></li>
+            <li><a href="gallery.html">GALLERY</a></li>
+            <li><a href="product.html">SHOP</a></li>
+            <li><a href="userprofile.html">USER PROFILE</a></li>
+            <li><a href="feedback.html">FEEDBACK</a></li>
+            <li><a href="sitemap.html" class>SITE MAP</a></li>
+            <li><a href="team.html">TEAM</a></li>
+            <li><a href="Editor.html">Page Editor</a></li>
+            <li><a href="Content.html">Content</a></li>
+        </ul>
+    </nav>
+    
+    <div class="content">
+        <h1>Site Map</h1>
+        <div class="sitemap">
+            <svg width="600" height="500">
+                <defs>
+                    <marker id="arrow" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="auto-start-reverse">
+                        <path d="M0,0 L10,5 L0,10 z" fill="#00f" />
+                    </marker>
+                </defs>
+                <!-- Nodes -->
+                <a xlink:href="home.html">
+                    <rect x="190" y="40" width="240" height="60" class="node" id="mainPage" />
+                    <text x="310" y="70" text-anchor="middle" alignment-baseline="middle">Main Page</text>
+                </a>
+                <a xlink:href="gallery.html">
+                    <rect x="40" y="140" width="140" height="60" class="node" id="gallery" />
+                    <text x="110" y="170" text-anchor="middle" alignment-baseline="middle">Gallery</text>
+                </a>
+                <a xlink:href="product.html">
+                    <rect x="190" y="140" width="140" height="60" class="node" id="shop" />
+                    <text x="260" y="170" text-anchor="middle" alignment-baseline="middle">Shop</text>
+                </a>
+                <a xlink:href="userprofile.html">
+                    <rect x="350" y="140" width="190" height="60" class="node" id="userProfile" />
+                    <text x="445" y="170" text-anchor="middle" alignment-baseline="middle">User Profile</text>
+                </a>
+                <a xlink:href="feedback.html">
+                    <rect x="40" y="240" width="140" height="60" class="node" id="feedback" />
+                    <text x="110" y="270" text-anchor="middle" alignment-baseline="middle">Feedback</text>
+                </a>
+                <a xlink:href="sitemap.html">
+                    <rect x="190" y="240" width="140" height="60" class="node" id="siteMap" />
+                    <text x="260" y="270" text-anchor="middle" alignment-baseline="middle">Site Map</text>
+                </a>
+                <a xlink:href="team.html">
+                    <rect x="350" y="240" width="140" height="60" class="node" id="team" />
+                    <text x="420" y="270" text-anchor="middle" alignment-baseline="middle">Team</text>
+                </a>
+                <a xlink:href="pageeditor.html">
+                    <rect x="190" y="340" width="190" height="60" class="node" id="pageEditor" />
+                    <text x="285" y="370" text-anchor="middle" alignment-baseline="middle">Page Editor</text>
+                </a>
+                <a xlink:href="Content.html">
+                    <rect x="190" y="440" width="140" height="60" class="node" id="content" />
+                    <text x="260" y="470" text-anchor="middle" alignment-baseline="middle">Content</text>
+                </a>
+                
+                <!-- Links -->
+                <line x1="310" y1="100" x2="110" y2="140" class="link" marker-end="url()" />
+                <line x1="310" y1="100" x2="260" y2="140" class="link" marker-end="url()" />
+                <line x1="310" y1="100" x2="445" y2="140" class="link" marker-end="url()" />
+                <line x1="110" y1="200" x2="110" y2="240" class="link" marker-end="url()" />
+                <line x1="260" y1="200" x2="260" y2="240" class="link" marker-end="url()" />
+                <line x1="420" y1="200" x2="420" y2="240" class="link" marker-end="url()" />
+                <line x1="260" y1="300" x2="285" y2="340" class="link" marker-end="url()" />
+                <line x1="260" y1="400" x2="260" y2="440" class="link" marker-end="url()" />
+            </svg>
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br> <br>
+    <footer>
+        <div class="footer-col">
+            <h4>Shop</h4>
+            <ul>
+                <li><a href="#">T-Shirts</a></li>
+                <li><a href="#">Water Bottle</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Gallery</h4>
+            <ul>
+                <li><a href="#">Healthy Activities</a></li>
+                <li><a href="#">Unhealthy Activities</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Team</h4>
+            <ul>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact Us</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Follow Us</h4>
+            <div class="links">
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+        <p>&copy; 2024 YourWebsiteName. All rights reserved.</p>
+    </footer>
+</body>
+</html>

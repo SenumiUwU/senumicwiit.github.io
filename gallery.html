@@ -5,35 +5,153 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gallery</title>
     <link rel="stylesheet" href="gallery.css">
+    <!-- Include Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    
 </head>
 <body>
+    <nav>
+        <img src="logoimg.png" alt="web logo">
+        <input type="checkbox" id="check" class="checkbtn">
+        <label for="check" class="checkbtn">
+            <i class="fas fa-bars"></i>
+        </label>
+        <ul>
+            <br>
+            <li><a href="home.html">HOME</a></li>
+            <li><a href="gallery.html">GALLERY</a></li>
+            <li><a href="product.html">SHOP</a></li>
+            <li><a href="userprofile.html">USER PROFILE</a></li>
+            <li><a href="feedback.html">FEEDBACK</a></li>
+            <li><a href="sitemap.html">SITE MAP</a></li>
+            <li><a href="team.html">TEAM</a></li>
+            <li><a href="Editor.html">Page Editor</a></li>
+            <li><a href="Content.html">Content</a></li>
+        </ul>
+    </nav>
+    <div class="heading-container">
+        <h1 class="heading">Galleries</h1>
+    </div>
+    
     <div class="full-img" id="fullImgBox">
         <img src="image gallery/image09.jpg" id="fullImg">
-        <span onclick="closeFullImg()">X</span>
+        <span class="close-btn" onclick="closeFullImg()">X</span>
+        <p id="imgDescription"></p>
+        <p id="imgTopic"></p> <!-- Element to display the topic -->
     </div>
+
     <div class="picture">
-        <img src="image gallery/image09.jpg" onclick="openFullImg(this.src)">
-        <img src="image gallery/image02.jpg" onclick="openFullImg(this.src)">
-        <img src="image gallery/image03.jpg" onclick="openFullImg(this.src)">
-        <img src="image gallery/image04.jpg" onclick="openFullImg(this.src)">
-        <img src="image gallery/image05.jpg" onclick="openFullImg(this.src)">
-        <img src="image gallery/image10.jpg" onclick="openFullImg(this.src)">
-        <img src="image gallery/image07.jpg" onclick="openFullImg(this.src)">
-        <img src="image gallery/image08.jpg" onclick="openFullImg(this.src)">
+        <img src="image gallery/image01.jpg" onclick="openFullImg(this)" data-description="Maternal mortality is the death of a woman during pregnancy, childbirth, or shortly after. It can be avoided through quality prenatal and postnatal care, skilled birth attendants, emergency obstetric services, and family planning resources. These measures are essential for reducing maternal deaths and improving maternal health." data-topic="Maternal Health">
+        <img src="image gallery/image02.jpg" onclick="openFullImg(this)" data-description="Efforts to halve global deaths and injuries from road traffic accidents by 2020 focus on enforcing traffic laws, improving road infrastructure, enhancing vehicle safety standards, raising public awareness, and strengthening emergency medical services. These measures aim to reduce accidents and injuries, ultimately saving lives and creating safer road environments globally." data-topic="Road Safety">
+        <img src="image gallery/image03.jpg" onclick="openFullImg(this)" data-description="By 2030, achieving universal access to sexual and reproductive health-care services, including family planning, education, and integration into national strategies, is essential. This goal aims to empower individuals with the resources and knowledge needed to make informed decisions about their sexual and reproductive health, promoting gender equality and improving overall health outcomes globally." data-topic="Reproductive Health">
+        <img src="image gallery/image04.jpg" onclick="openFullImg(this)" data-description="Environmental health focuses on safeguarding public well-being by addressing factors in the environment that can affect health. This includes managing air and water quality, reducing exposure to hazardous substances like pollutants and chemicals, ensuring safe waste disposal practices, and promoting sustainable development. By improving environmental health, communities can mitigate risks of diseases, promote healthier living conditions, and preserve natural ecosystems for current and future generations." data-topic="Environmental Health">
+        <img src="image gallery/image05.jpg" onclick="openFullImg(this)" data-description="Achieving universal health coverage means ensuring everyone has access to quality healthcare services, including affordable essential medicines and vaccines. This goal aims to provide equitable healthcare access and financial protection, promoting better health outcomes worldwide." data-topic="Universal Health Coverage">
+        <img src="image gallery/image10.jpg" onclick="openFullImg(this)" data-description="Efforts to strengthen substance abuse prevention and treatment, including narcotics and alcohol, are interconnected with implementing the WHO Framework Convention on Tobacco Control globally. This includes enacting policies like taxation, advertising bans, and smoke-free laws to promote public health and reduce harmful behaviors." data-topic="Substance Abuse Prevention">
+        <img src="image gallery/image07.jpg" onclick="openFullImg(this)" data-description="By aiming to reduce neonatal mortality to at least 12 deaths per 1,000 live births and under-5 mortality to at least 25 deaths per 1,000 live births by 2030, countries commit to ending preventable deaths of newborns and young children. These targets underscore global efforts to improve healthcare access, nutrition, and socioeconomic conditions, ensuring healthier futures for the youngest members of society." data-topic="Child Health">
+        <img src="image gallery/image08.jpg" onclick="openFullImg(this)" data-description="By aiming to end the epidemics of AIDS, tuberculosis, malaria, and neglected tropical diseases, and combat hepatitis, water-borne diseases, and other communicable diseases by 2030, global efforts prioritize comprehensive strategies. This includes enhancing healthcare access, promoting vaccination campaigns, improving sanitation, and fostering international collaboration to mitigate the spread of infectious diseases and achieve sustainable health outcomes worldwide." data-topic="Infectious Diseases">
+    </div>
+    
+    <footer>
+        <div class="footer-col">
+            <h4><b>Shop</b></h4>
+            <ul>
+                <li><a href="#"><b>T-Shirts</b></a></li>
+                <li><a href="#"><b>Water Bottle</b></a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4><b>Gallery</b></h4>
+            <ul>
+                <li><a href="#"><b>Healthy Activities</b></a></li>
+                <li><a href="#"><b>Unhealthy Activities</b></a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4><B>Team</B></h4>
+            <ul>
+                <li><a href="#"><b>about</b></a></li>
+                <li><a href="#"><b>contact us</b></a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4><B>Follow Us</B></h4>
+            <div class="links">
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+        <p>&copy; 2024 YourWebsiteName. All rights reserved.</p>
+    </footer>
+
+    <!-- Customization Controls -->
+    <div class="customize-controls">
+        <div class="colorchange">
+            <div class="name">Background Color:</div>
+            <button id="color1" onclick="changeBackgroundColor('#8dd9d2')"></button>
+            <button id="color2" onclick="changeBackgroundColor('#ffcccc')"></button>
+            <button id="color3" onclick="changeBackgroundColor('#ccffcc')"></button>
+        </div>
+
+        <div class="fontchange">
+            <div class="name">Font Style:</div>
+            <button id="font1" onclick="changeFontStyle('Montserrat, sans-serif')">A</button>
+            <button id="font2" onclick="changeFontStyle('Arial, sans-serif')">A</button>
+            <button id="font3" onclick="changeFontStyle('Verdana, sans-serif')">A</button>
+        </div>
     </div>
 
     <script>
         var fullImgBox = document.getElementById("fullImgBox");
         var fullImg = document.getElementById("fullImg");
+        var imgDescription = document.getElementById("imgDescription");
+        var imgTopic = document.getElementById("imgTopic");
 
-        function openFullImg(pic) {
+        function openFullImg(imgElement) {
+            var pic = imgElement.src;
+            var description = imgElement.getAttribute('data-description');
+            var topic = imgElement.getAttribute('data-topic'); // Get the topic attribute
+            
             fullImgBox.style.display = "flex";
             fullImg.src = pic;
+            fullImg.style.width = "500px";
+            fullImg.style.height = "500px";
+
+            if (description) {
+                imgDescription.textContent = description;
+                imgDescription.style.display = "block";
+            } else {
+                imgDescription.style.display = "none";
+            }
+
+            // Display the topic if available
+            if (topic) {
+                imgTopic.textContent = "Topic: " + topic;
+                imgTopic.style.display = "block";
+            } else {
+                imgTopic.style.display = "none";
+            }
         }
 
         function closeFullImg() {
             fullImgBox.style.display = "none";
         }
+
+        fullImgBox.addEventListener('click', function(e) {
+            if (e.target === fullImgBox || e.target === document.querySelector(".close-btn")) {
+                closeFullImg();
+            }
+        });
+
+        function changeBackgroundColor(color) {
+            document.body.style.backgroundColor = color;
+        }
+
+        function changeFontStyle(font) {
+            document.body.style.fontFamily = font;
+        }
     </script>
 </body>
 </html>
+   
