@@ -1,1 +1,1 @@
-An interactive user profile for a welllness website.
+An interactive wellness website with added features.
